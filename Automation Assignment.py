@@ -115,7 +115,6 @@ for i in range(int(page_limit)):     # Iteration for each page
             page = requests.get(url, headers=headers)   # Requesting page information
             break
         except requests.exceptions.ConnectionError:
-            print("Connection Refused")
             time.sleep(5)
 
     soup = BeautifulSoup(page.content, 'lxml')  # Parsing page content using lxml parser
@@ -129,39 +128,30 @@ for i in range(int(page_limit)):     # Iteration for each page
         row_data = []
 
         company_name = get_company_name(company_cards[j])                          #    Get Company Name
-        print(company_name, end=',')
         row_data.append(company_name)                                              #    Append to Row List
 
         company_url = get_company_url(company_cards[j])                            #    Get Company Website Url
-        print(company_url, end=',')
         row_data.append(company_url)                                               #    Append to Row List
 
         company_location = get_company_location(company_cards[j])                  #    Get Company Location
-        print(company_location, end=',')
         row_data.append(company_location)                                          #    Append to Row List
 
         company_contact = get_company_contact(company_cards[j])                    #    Get Company Contact info
-        print(company_contact, end=',')
         row_data.append(company_contact)                                           #    Append to Row List
 
         company_ratings = get_company_ratings(company_cards[j])                    #    Get Company Ratings
-        print(company_ratings, end=',')
         row_data.append(company_ratings)                                           #    Append to Row List
 
         company_review_count = get_company_review_count(company_cards[j])          #    Get Company Review Count
-        print(company_review_count, end=',')
         row_data.append(company_review_count)                                      #    Append to Row List
 
         company_hourly_rate = get_company_hourly_rate(company_cards[j])            #    Get Company Hourly Rate
-        print(company_hourly_rate, end=',')
         row_data.append(company_hourly_rate)                                       #    Append to Row List
 
         company_project_size = get_company_project_size(company_cards[j])          #    Get Company Project Size
-        print(company_project_size, end=',')
         row_data.append(company_project_size)                                      #    Append to Row List
 
         company_employee_size = get_company_employee_size(company_cards[j])        #    Get Company Employee Size
-        print(company_employee_size, end='\n')
         row_data.append(company_employee_size)                                     #    Append to Row List
 
         writer.writerow(row_data)
